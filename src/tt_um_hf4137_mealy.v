@@ -19,11 +19,12 @@ module tt_um_hf4137_mealy (
     wire z1;
     reg [3:1] y;
     reg [3:1] next_state;
+    
     parameter state_a=3'b000,
-    state_b=3'b001,
-    state_c=3'b011,
-    state_d=3'b010,
-    state_e=3'b100;
+              state_b=3'b001,
+              state_c=3'b011,
+              state_d=3'b010,
+              state_e=3'b100;
     always@(posedge clk)
     begin
     if(~rst_n)
@@ -32,7 +33,9 @@ module tt_um_hf4137_mealy (
     y<=next_state;
     end
     assign z1=(y[3] & ~x1 & clk)|(y[2] & y[1] & x1 & clk);
+    
     always @(y or x1)
+        
     begin
 
     case(y)
